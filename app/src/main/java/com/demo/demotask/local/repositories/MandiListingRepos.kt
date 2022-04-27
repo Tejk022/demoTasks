@@ -11,9 +11,9 @@ import com.demo.demotask.remote.services.NetworkResponses
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
 
 class MandiListingRepos {
-
 
     companion object {
 
@@ -37,7 +37,7 @@ class MandiListingRepos {
                     .getMandiData(apiKey, format, offset, limit)
                 NetworkResponses.Success(response)
 
-            } catch (e: Exception) {
+            } catch (e: HttpException) {
                 NetworkResponses.Error(exception = e)
             }
         }
